@@ -1,0 +1,17 @@
+{
+	"name": "kamran.pro",
+	"version": "1.0.0",
+	"main": "index.js",
+	"license": "MIT",
+	"scripts": {
+		"build": "gatsby build && mv ./favicon.ico ./public/",
+		"clean": "gatsby clean",
+		"develop": "gatsby develop"
+	},
+	"dependencies": {
+		"@wkocjan/gatsby-theme-intro": "^2.0.1",
+		"gatsby": "3.15.0",
+		"react": "^16.9.0",
+		"react-dom": "^16.9.0"
+	}
+}

@@ -1,0 +1,29 @@
+- name: Salama
+  url:
+  description:
+    Developed Smart Health application that allows hospital admin to see live updates of incoming ambulances on Google maps and current condition of incoming patients.
+
+    * Integrated stripe payment gateway to accept online payments.
+
+    * Setup Gitlab CI/CD for automatic deployment.
+
+    * Incorporated Google Cloud Storage for static files / images.
+
+    * Used Ngx datatables and NgZorro UI components.
+
+    * Ingegrated Dialog flow for ChatBot. Which communicated with Salama in order to call ambulances and provide instant help.
+
+    * Used Flutter for mobile applications.
+
+    * Integrated FCM for push notifications.
+  status: live
+  tags:
+    - Flutter
+    - Angular
+    - Gitlab
+    - Firebase
+    - FHIR
+    - Typescript
+    - Nodejs
+  icon: salama
+  image: images/salama.png

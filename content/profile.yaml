@@ -1,0 +1,36 @@
+- profile:
+  initials: MK
+  name: Muhammad Kamran
+  profession: Sr. Software Engineer
+  image: images/profile.jpg
+  location: Feldkirch, AT
+  relocation: false
+  company: Jumio
+  for_hire: true
+  focus: Trying out SvelteKit
+  focus_url: https://kit.svelte.dev/
+  about: |
+    From my early school days I use to blog about Windows and Linux customization, from managing my own blog and trying to customize and tweak it every now and then. I became interested in Web development and I started learning it, from some basic html/css and little bit of JavaScript. Now, I am a passionate software developer with a bachelor's degree in Software Engineering. 
+
+    I love working with cutting-edge tech and I'm always trying to find new things to learn and grow. Currently, I work with the JavaScript stack. Angular / React / Svelte, Typescript, Nx, Storybook, Jest, Redux, Ngrx, Rxjs, Npm, Nodejs, Git. SCSS/CSS, HTML are my home.
+
+    Some other tools I'm familiar with: Gitlab, Gitlab CI, Visual Studio Code, Capacitor, Appflow, Jira, Slack, Github, Figma.
+  skills:
+    - Node & Deno
+    - Typescript
+    - Angular
+    - Jest & Karma
+    - Redux
+    - HTML/CSS
+  tools:
+    - Git
+    - VSCode
+    - Nx
+    - Cypress
+    - Storybook
+    - Tailwind
+  budget:
+    currency: $
+    min: 5
+    max: 30
+    default: 10
