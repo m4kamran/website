@@ -100,332 +100,354 @@ const capabilities = [
     items: ['API and data design', 'Cloud-native releases', 'Applied AI workflows', 'Technical mentorship'],
   },
 ];
+
+let experienceLine = 5;
+const experienceEntries = experiences.map((experience) => {
+  const lines = {
+    summary: experienceLine++,
+    description: experienceLine++,
+    details: experienceLine++,
+    tags: experienceLine++,
+    url: experience.url ? experienceLine++ : undefined,
+    close: experienceLine++,
+  };
+  return { ...experience, lines };
+});
+const experienceClosingLine = experienceLine;
+
+let capabilityLine = 5;
+const capabilityEntries = capabilities.map((capability) => {
+  const lines = {
+    open: capabilityLine++,
+    title: capabilityLine++,
+    items: capabilityLine++,
+    close: capabilityLine++,
+    reference: capabilityLine++,
+  };
+  return { ...capability, lines };
+});
+const capabilityClosingLine = capabilityLine;
+
+let projectLine = 5;
+const projectLines = [0, 1].map(() => ({
+  open: projectLine++,
+  category: projectLine++,
+  name: projectLine++,
+  summary: projectLine++,
+  stack: projectLine++,
+  close: projectLine++,
+}));
+const projectClosingLine = projectLine++;
+const projectReturnLine = projectLine;
 ---
 
 <Layout
   title="M. Kamran — Senior Software Engineer"
   description="Senior software engineer in Vorarlberg, Austria. I design and build robust products across frontend, backend and applied AI."
 >
-  <div class="site-shell">
-    <main id="top">
-      <section class="hero-shell" aria-labelledby="hero-heading">
-        <div class="hero-frame is-loading">
-          <div class="hero-loader" role="status" aria-live="polite">
-            <svg viewBox="0 0 72 72" aria-hidden="true">
-              <circle cx="36" cy="36" r="25"></circle><circle cx="36" cy="36" r="4"></circle>
-              <path d="M36 2v17m0 34v17M2 36h17m34 0h17"></path>
-            </svg>
-            <div><span>Loading landscape</span><i><b></b></i><small>MK / FIELD 00</small></div>
-          </div>
+  <a class="skip-link" href="#main-buffer">Skip to content</a>
 
-          <div class="hero-stage" aria-hidden="true" inert>
-            <img
-              class="hero-image"
-              src="/images/hero-sunset.webp"
-              alt=""
-              width="1672"
-              height="941"
-              decoding="async"
-              fetchpriority="high"
-            />
-            <div class="noise-overlay" aria-hidden="true"></div>
-            <svg class="hero-contours" viewBox="0 0 900 700" aria-hidden="true" fill="none">
-              <path d="M63 574C56 430 142 357 130 239C118 121 266 47 406 75C546 103 584 212 698 234C812 256 866 389 805 505C744 621 624 655 510 618C396 581 326 663 205 641C130 627 67 635 63 574Z"></path>
-              <path d="M109 552C103 429 175 367 165 266C155 165 280 102 399 126C518 150 550 243 647 262C744 281 790 394 738 493C686 592 584 621 487 589C390 557 331 627 228 608C164 596 112 604 109 552Z"></path>
-              <path d="M158 528C153 428 211 378 203 296C195 214 296 163 392 182C488 201 514 277 592 292C670 307 707 399 665 479C623 559 541 582 463 556C385 530 337 587 254 571C203 562 160 570 158 528Z"></path>
-            </svg>
-            <div class="hero-shade" aria-hidden="true"></div>
+  <div class="editor-shell">
+    <header class="app-bar">
+      <div class="window-mark" aria-hidden="true"><span></span><span></span><span></span></div>
+      <a class="workspace-name" href="#top"><span>~/</span>kamran.pro</a>
+      <span class="branch">main*</span>
+    </header>
 
-            <header class="nav">
-              <nav aria-label="Primary navigation">
-                <a href="#about">Profile</a><a href="#work">Experience</a><a href="#capabilities">Capabilities</a><a href="#projects">Projects</a><a href="#contact">Inquiries</a>
-              </nav>
-            </header>
+    <div class="editor-layout">
+      <aside class="explorer" aria-label="Portfolio explorer">
+        <div class="pane-label"><span>EXPLORER</span><b>...</b></div>
+        <p class="project-root"><span>⌄</span> KAMRAN.PRO</p>
+        <nav aria-label="Primary navigation">
+          <a class="is-active" href="#top" data-section="top"><i class="file-icon ts">TS</i><span>kamran.ts</span></a>
+          <a href="#about" data-section="about"><i class="file-icon markdown">M</i><span>about.md</span></a>
+          <a href="#work" data-section="work"><i class="file-icon ts">TS</i><span>experience.ts</span></a>
+          <a href="#capabilities" data-section="capabilities"><i class="file-icon ts">TS</i><span>capabilities.ts</span></a>
+          <a href="#projects" data-section="projects"><i class="file-icon lua">L</i><span>projects.lua</span></a>
+          <a href="#education" data-section="education"><i class="file-icon markdown">M</i><span>education.md</span></a>
+          <a href="#contact" data-section="contact"><i class="file-icon shell">$</i><span>contact.sh</span></a>
+        </nav>
 
-            <div class="hero-topline"><span>M. KAMRAN / SENIOR SOFTWARE ENGINEER</span><span>47.2692° N · 09.6120° E</span></div>
-            <div class="hero-bottom">
-              <h1 id="hero-heading" class="reveal">Kamran<span>*</span></h1>
-              <div class="hero-intro reveal delay-2">
-                <p>Full-stack product engineer with deep frontend expertise. I guide architecture, delivery and teams from first sketch to resilient production software.</p>
-                <a href="#work">Explore the work <b>→</b></a>
+        <div class="explorer-block">
+          <p><span>⌄</span> OUTLINE</p>
+          <dl>
+            <div><dt>kamran</dt><dd>object</dd></div>
+            <div><dt>experience</dt><dd>6 items</dd></div>
+            <div><dt>capabilities</dt><dd>3 items</dd></div>
+            <div><dt>status</dt><dd class="ok">available</dd></div>
+          </dl>
+        </div>
+
+        <div class="explorer-foot">
+          <span>47.2692° N</span>
+          <span>09.6120° E</span>
+        </div>
+      </aside>
+
+      <div class="buffer">
+        <div class="winbar">
+          <div class="breadcrumbs"><span>kamran.pro</span><b>›</b><span>src</span><b>›</b><strong data-buffer-name>kamran.ts</strong></div>
+          <span class="diagnostics"><i></i> 0 errors</span>
+        </div>
+
+        <nav class="mobile-nav" aria-label="Mobile navigation">
+          <a href="#top">kamran</a><a href="#about">about</a><a href="#work">work</a><a href="#capabilities">skills</a><a href="#projects">projects</a><a href="#contact">contact</a>
+        </nav>
+
+        <main id="main-buffer">
+          <section id="top" class="editor-section hero-section" data-buffer="kamran.ts" aria-labelledby="hero-heading">
+            <div class="section-content hero-content">
+              <p class="code-comment source-line" data-line="1">// portfolio/kamran.ts</p>
+              <p class="code-line source-line" data-line="3"><span class="syntax-keyword">export const</span> <span class="syntax-function">kamran</span> <span class="syntax-punctuation">= {'{'}</span></p>
+              <div class="code-indent hero-copy">
+                <p class="hero-name-label source-line is-indented" data-line="4"><span class="syntax-property">name</span><span class="syntax-punctuation">:</span></p>
+                <h1 id="hero-heading"><span class="string-mark">"</span>Muhammad <span>Kamran</span><span class="string-mark">"</span><b>,</b></h1>
+                <p class="hero-role source-line is-indented" data-line="5"><span class="syntax-property">role</span><span class="syntax-punctuation">:</span> <span class="syntax-string">"Full-stack product engineer"</span><span class="syntax-punctuation">,</span></p>
+                <p class="hero-intro source-line is-indented" data-line="6"><span class="syntax-property">summary</span><span class="syntax-punctuation">:</span> <span class="syntax-string">"I guide architecture, delivery and teams from first sketch to resilient production software, with deep frontend expertise and a practical full-stack range."</span><span class="syntax-punctuation">,</span></p>
+              </div>
+              <p class="code-line hero-close source-line" data-line="7"><span class="syntax-punctuation">{'}'}</span> <span class="syntax-keyword">as const</span><span class="syntax-punctuation">;</span></p>
+
+              <dl class="runtime-grid" aria-label="Professional summary">
+                <div><dt>location</dt><dd>Vorarlberg / AT</dd></div>
+                <div><dt>scope</dt><dd>interface → infrastructure</dd></div>
+                <div><dt>focus</dt><dd>product / systems / AI</dd></div>
+                <div><dt>experience</dt><dd>10+ years</dd></div>
+              </dl>
+              <div class="hero-actions" aria-label="Editor commands">
+                <a class="primary-command" href="#work"><span>:edit</span> experience.ts</a>
+                <a href="mailto:m4kamran008@gmail.com"><span>:!xdg-open</span> 'mailto:m4kamran008@gmail.com'</a>
               </div>
             </div>
-          </div>
-        </div>
-        <noscript><style>.hero-loader{display:none!important}.hero-stage{opacity:1!important;visibility:visible!important}</style></noscript>
-      </section>
+          </section>
 
-      <section class="datum-strip" aria-label="Professional summary">
-        <div class="atlas-wrap">
-          <div><span>Based</span><strong>VORARLBERG / AT</strong></div>
-          <div><span>Range</span><strong>INTERFACE → INFRASTRUCTURE</strong></div>
-          <div><span>Focus</span><strong>PRODUCT / SYSTEMS / AI</strong></div>
-          <div><span>Experience</span><strong>10+ YEARS</strong></div>
-        </div>
-      </section>
-
-      <section id="work" class="atlas-section atlas-wrap">
-        <header class="section-heading reveal">
-          <div><span>SECTOR 01</span><span>TRAJECTORY</span></div>
-          <h2>A route shaped by<br />increasing ownership.</h2>
-          <p>Six waypoints across product engineering, from independent delivery to technical direction.</p>
-        </header>
-
-        <div class="experience-list">
-          {experiences.map((experience, index) => (
-            <details class="experience reveal" open={index === 0}>
-              <summary>
-                <span class="waypoint"><i></i>WP.{String(experiences.length - index).padStart(2, '0')}</span>
-                <span class="experience-main">
-                  <strong>{experience.company}</strong>
-                  <span>{experience.role}</span>
-                </span>
-                <span class="experience-meta"><b>{experience.period}</b><small>{experience.location}</small></span>
-                {experience.current && <span class="current">ACTIVE</span>}
-                <span class="toggle" aria-hidden="true">+</span>
-              </summary>
-              <div class="experience-body">
-                <p class="experience-summary">{experience.summary}</p>
-                <ul>{experience.details.map((detail) => <li>{detail}</li>)}</ul>
-                <p class="tech-line">{experience.tags.join(' / ')}{experience.url && <> / <a href={experience.url} target="_blank" rel="noreferrer">PROFILE ↗</a></>}</p>
+          <section id="about" class="editor-section" data-buffer="about.md" aria-labelledby="about-heading">
+            <div class="section-content">
+              <header class="section-header source-line" data-line="1">
+                <p><span class="syntax-type">#</span> README.md</p>
+                <span>PROFILE</span>
+              </header>
+              <div class="profile-split">
+                <div class="profile-copy">
+                  <p class="code-comment source-line" data-line="3">&gt; product-engineering / architecture / delivery</p>
+                  <h2 id="about-heading">I build clear software and guide ambitious products from architecture to production.</h2>
+                  <p>{aboutText}</p>
+                </div>
+                <aside class="profile-pane" aria-label="Profile details">
+                  <header><span>profile.webp</span><b>×</b></header>
+                  <Image src={profileImage} alt="Portrait of M. Kamran" width={320} height={320} format="webp" />
+                  <div class="profile-data-tab">profile.json</div>
+                  <p class="profile-json-brace">{'{'}</p>
+                  <dl>
+                    <div><dt>"base":</dt><dd>"Vorarlberg · Austria",</dd></div>
+                    <div><dt>"languages":</dt><dd>"English · German B1",</dd></div>
+                    <div><dt>"perspective":</dt><dd>"Frontend → AI systems",</dd></div>
+                    <div><dt>"status":</dt><dd class="ok">"available"</dd></div>
+                  </dl>
+                  <p class="profile-json-brace">{'}'}</p>
+                </aside>
               </div>
-            </details>
-          ))}
-        </div>
-      </section>
-
-      <section id="about" class="atlas-section profile-section">
-        <div class="atlas-wrap profile-card reveal">
-          <p class="profile-label">Product engineering</p>
-          <h2><span>I’m Kamran,</span> <i>a full-stack product engineer.</i> <span>I build clear software and guide ambitious products from architecture to production.</span></h2>
-          <p class="profile-body" aria-label={aboutText}>
-            {Array.from(aboutText).map((character, index) => <span class="animated-char" style={`--char: ${index}`}>{character === ' ' ? '\u00A0' : character}</span>)}
-          </p>
-          <div class="profile-footer">
-            <Image src={profileImage} alt="Portrait of M. Kamran" width={88} height={88} format="webp" />
-            <dl>
-              <div><dt>Base</dt><dd>Vorarlberg · Austria</dd></div>
-              <div><dt>Languages</dt><dd>English · German B1</dd></div>
-              <div><dt>Perspective</dt><dd>Frontend → AI systems</dd></div>
-            </dl>
-          </div>
-        </div>
-      </section>
-
-      <section id="capabilities" class="atlas-section capabilities bg-noise">
-        <header class="capabilities-heading atlas-wrap reveal">
-          <h2>Studio-grade engineering for ambitious products.<br /><span>Built for clarity. Ready for scale.</span></h2>
-          <p>03 / CAPABILITIES</p>
-        </header>
-        <div class="capability-grid atlas-wrap">
-          <article class="capability-card capability-journey reveal">
-            <div class="delivery-visual" aria-hidden="true">
-              <div class="delivery-head"><span>PRODUCT ROUTE</span><span>01 → 03</span></div>
-              <svg viewBox="0 0 320 350" fill="none">
-                <defs>
-                  <pattern id="delivery-grid" width="18" height="18" patternUnits="userSpaceOnUse">
-                    <path d="M18 0H0V18" />
-                  </pattern>
-                </defs>
-                <rect class="delivery-grid" width="320" height="350" fill="url(#delivery-grid)"></rect>
-                <path class="delivery-route-base" d="M36 47V302"></path>
-                <path class="delivery-route" d="M36 47V302"></path>
-
-                <g class="delivery-stage sketch-stage">
-                  <circle cx="36" cy="54" r="7"></circle><text x="20" y="34">01</text>
-                  <path class="stage-link" d="M44 54H67"></path>
-                  <rect class="stage-frame" x="67" y="20" width="225" height="82" rx="4"></rect>
-                  <rect class="browser-frame" x="82" y="35" width="83" height="52" rx="2"></rect>
-                  <path d="M82 45h83M89 40h2m4 0h2m4 0h2M91 55h29v22H91zm36 0h28m-28 7h22m-22 7h26"></path>
-                  <text class="stage-title" x="182" y="51">SKETCH</text>
-                  <text class="stage-note" x="182" y="69">WIREFRAME / FLOW</text>
-                  <path class="sketch-mark" d="M182 82h67"></path>
-                </g>
-
-                <g class="delivery-stage build-stage">
-                  <circle cx="36" cy="164" r="7"></circle><text x="20" y="144">02</text>
-                  <path class="stage-link" d="M44 164H67"></path>
-                  <rect class="stage-frame" x="67" y="126" width="225" height="82" rx="4"></rect>
-                  <path class="code-lines" d="M84 145h43m-43 10h68m-68 10h55m-55 10h74"></path>
-                  <text class="stage-title" x="182" y="151">BUILD</text>
-                  <text class="stage-note" x="182" y="169">CODE / TEST / REVIEW</text>
-                  <rect class="build-track" x="182" y="184" width="91" height="3"></rect>
-                  <rect class="build-progress" x="182" y="184" width="91" height="3"></rect>
-                </g>
-
-                <g class="delivery-stage ship-stage">
-                  <circle cx="36" cy="274" r="7"></circle><text x="20" y="254">03</text>
-                  <path class="stage-link" d="M44 274H67"></path>
-                  <rect class="stage-frame" x="67" y="232" width="225" height="88" rx="4"></rect>
-                  <circle class="deploy-ring" cx="115" cy="276" r="24"></circle>
-                  <circle class="deploy-core" cx="115" cy="276" r="6"></circle>
-                  <path d="M115 252v-8m0 64v-8m-24-24h-8m64 0h-8"></path>
-                  <text class="stage-title" x="160" y="267">SHIP</text>
-                  <text class="stage-note" x="160" y="285">PRODUCTION / LIVE</text>
-                  <path class="release-check" d="m160 300 6 6 12-14"></path>
-                </g>
-              </svg>
-              <div class="delivery-status"><i></i><span>RELEASE HEALTHY</span><b>100%</b></div>
             </div>
-            <div class="noise-overlay"></div>
-            <h3>From first sketch<br />to shipped product.</h3>
-          </article>
-          {capabilities.map((capability, index) => (
-            <article class="capability-card capability-copy reveal" style={`--delay: ${(index + 1) * 120}ms`}>
-              <div class="capability-icon"><span></span><span></span></div>
-              <div><p>{capability.number}</p><h3>{capability.title}</h3></div>
-              <ul>{capability.items.map((item) => <li><span>✓</span>{item}</li>)}</ul>
-              <a href="#work">See the evidence <b>→</b></a>
-            </article>
-          ))}
-        </div>
-      </section>
+          </section>
 
-      <section id="projects" class="atlas-section atlas-wrap selected-work">
-        <header class="section-heading reveal">
-          <div><span>SECTOR 04</span><span>SELECTED OUTPUT</span></div>
-          <h2>Products beyond<br />the main route.</h2>
-          <p>Two explorations spanning consumer mobile and connected health systems.</p>
-        </header>
-        <div class="project-plates">
-          <article class="project-plate reveal">
-            <div class="plate-index"><span>PLATE 01</span><b>CONSUMER / MOBILE</b></div>
-            <div class="plate-drawing wallpaper-drawing" aria-hidden="true">
-              <svg viewBox="0 0 600 390" fill="none">
-                <path class="contour" d="M-20 346C74 209 131 321 201 201C271 81 398 159 442 56C486-47 579 67 639-5"></path>
-                <path class="contour" d="M-3 383C89 250 156 352 232 230C308 108 421 188 471 86C521-16 595 98 650 38"></path>
-                <rect x="218" y="42" width="177" height="306"></rect><rect x="229" y="55" width="155" height="280"></rect>
-                <path class="screen-land" d="M230 274l42-69 33 36 31-72 48 59v107H229Z"></path>
-                <path d="M280 65h54"></path><circle cx="306" cy="317" r="5"></circle>
-              </svg>
+          <section id="work" class="editor-section" data-buffer="experience.ts" aria-labelledby="work-heading">
+            <div class="section-content">
+              <header class="section-header source-line" data-line="1">
+                <p><span class="syntax-keyword">export const</span> <strong id="work-heading" class="syntax-function">experience</strong> <span class="syntax-punctuation">= [</span></p>
+                <span>6 REFERENCES</span>
+              </header>
+              <p class="section-lead code-comment source-line" data-line="3">// Six roles across product engineering, from independent delivery to technical direction.</p>
+
+              <div class="experience-list">
+                {experienceEntries.map((experience, index) => (
+                  <details class="experience" open={index === 0}>
+                    <summary class="source-line" data-line={experience.lines.summary}>
+                      <span class="fold" aria-hidden="true">›</span>
+                      <span class="experience-index"><b>{'{'}</b><small>// {String(index + 1).padStart(2, '0')}</small></span>
+                      <span class="experience-main">
+                        <strong><span class="syntax-property">company</span><span class="syntax-punctuation">:</span> <span class="syntax-string">"{experience.company}"</span><span class="syntax-punctuation">,</span></strong>
+                        <small><span class="syntax-property">role</span><span class="syntax-punctuation">:</span> <span class="syntax-string">"{experience.role}"</span><span class="syntax-punctuation">,</span></small>
+                      </span>
+                      <span class="experience-meta">
+                        <b><span class="syntax-property">period</span><span class="syntax-punctuation">:</span> <span class="syntax-string">"{experience.period}"</span><span class="syntax-punctuation">,</span></b>
+                        <small><span class="syntax-property">location</span><span class="syntax-punctuation">:</span> <span class="syntax-string">"{experience.location}"</span><span class="syntax-punctuation">,</span></small>
+                      </span>
+                      {experience.current && <span class="current"><i></i><span class="syntax-property">current</span>: true,</span>}
+                    </summary>
+                    <div class="experience-body">
+                      <p class="experience-summary-field source-line is-nested" data-line={experience.lines.description}><span class="syntax-property">summary</span><span class="syntax-punctuation">:</span> <span class="syntax-string">"{experience.summary}"</span><span class="syntax-punctuation">,</span></p>
+                      <p class="details-field source-line is-nested" data-line={experience.lines.details}><span class="syntax-property">details</span><span class="syntax-punctuation">: [</span> {experience.details.map((detail) => <><span class="syntax-string">"{detail}"</span><span class="syntax-punctuation">, </span></>)}<span class="syntax-punctuation">],</span></p>
+                      <div class="tech-line">
+                        <p class="source-line is-nested" data-line={experience.lines.tags}><span class="syntax-property">tags</span><span class="syntax-punctuation">: [</span> {experience.tags.map((tag) => <><span class="syntax-string">"{tag}"</span><span class="syntax-punctuation">, </span></>)}<span class="syntax-punctuation">],</span></p>
+                        {experience.url && <p class="source-line is-nested" data-line={experience.lines.url}><span class="syntax-property">url</span><span class="syntax-punctuation">:</span> <a href={experience.url} target="_blank" rel="noreferrer">"{experience.url}"</a><span class="syntax-punctuation">,</span></p>}
+                        <p class="object-close syntax-punctuation source-line is-nested" data-line={experience.lines.close}>{'}'},</p>
+                      </div>
+                    </div>
+                  </details>
+                ))}
+              </div>
+              <p class="section-close source-line" data-line={experienceClosingLine}><span class="syntax-punctuation">]</span> <span class="syntax-keyword">as const</span><span class="syntax-punctuation">;</span></p>
             </div>
-            <div class="plate-copy"><h3>Wallpaper application</h3><p>An App Store product built with web technologies and delivered to native devices.</p><span>NEXT.JS / REACT / CAPACITOR</span></div>
-          </article>
-          <article class="project-plate reveal">
-            <div class="plate-index"><span>PLATE 02</span><b>CONNECTED HEALTH</b></div>
-            <div class="plate-drawing health-drawing" aria-hidden="true">
-              <svg viewBox="0 0 600 390" fill="none">
-                <path class="road" d="M-20 327C83 254 130 331 221 240C312 149 359 217 443 125C488 76 534 58 620 42"></path>
-                <path class="road minor" d="M39 18C114 98 174 41 251 108C328 175 392 297 629 249"></path>
-                <g class="marker"><circle cx="221" cy="240" r="34"></circle><circle cx="221" cy="240" r="6"></circle><path d="M221 198v-25m-8 8 8-8 8 8"></path></g>
-                <rect x="376" y="78" width="143" height="74"></rect><path class="signal" d="M393 115h17l9-17 13 36 10-19h58"></path>
-                <text x="376" y="173">LIVE PATIENT SIGNAL</text>
-              </svg>
+          </section>
+
+          <section id="capabilities" class="editor-section" data-buffer="capabilities.ts" aria-labelledby="capabilities-heading">
+            <div class="section-content">
+              <header class="section-header source-line" data-line="1">
+                <p><span class="syntax-keyword">export const</span> <strong id="capabilities-heading" class="syntax-function">capabilities</strong> <span class="syntax-punctuation">= [</span></p>
+                <span>SYMBOLS</span>
+              </header>
+              <div class="capabilities-intro">
+                <h2 class="source-line" data-line="2"><span>/**</span> Studio-grade engineering for ambitious products.</h2>
+                <p class="source-line" data-line="3">* Built for clarity. Ready for scale. */</p>
+              </div>
+              <div class="capability-grid">
+                {capabilityEntries.map((capability) => (
+                  <article class="capability-card">
+                    <div class="capability-title source-line is-card" data-line={capability.lines.open}><span><b>{'{'}</b> // {capability.number}</span><i>object</i></div>
+                    <h3 class="source-line is-card" data-line={capability.lines.title}><span class="syntax-property">title</span><span class="syntax-punctuation">:</span> <span class="syntax-string">"{capability.title}"</span><span class="syntax-punctuation">,</span></h3>
+                    <p class="capability-items-label source-line is-card" data-line={capability.lines.items}><span class="syntax-property">items</span><span class="syntax-punctuation">: [</span> {capability.items.map((item) => <><span class="syntax-string">"{item}"</span><span class="syntax-punctuation">, </span></>)}<span class="syntax-punctuation">],</span></p>
+                    <p class="capability-object-close syntax-punctuation source-line is-card" data-line={capability.lines.close}>{'}'},</p>
+                    <a class="source-line is-card" data-line={capability.lines.reference} href="#work">// go to definition <b>→</b></a>
+                  </article>
+                ))}
+              </div>
+              <p class="section-close source-line" data-line={capabilityClosingLine}><span class="syntax-punctuation">]</span> <span class="syntax-keyword">as const</span><span class="syntax-punctuation">;</span></p>
             </div>
-            <div class="plate-copy"><h3>Smart Health</h3><p>Live ambulance tracking and incoming patient status for hospital administrators.</p><span>ANGULAR / NODE.JS / FHIR</span></div>
-          </article>
-        </div>
-      </section>
+          </section>
 
-      <section class="foundation atlas-wrap reveal">
-        <p class="map-label">SECTOR 05 / FOUNDATION</p>
-        <div><span>2015 — 2019</span><h2>Bachelor’s in<br />Software Engineering</h2><p>COMSATS University · Islamabad, Pakistan</p></div>
-        <div class="awards"><span>FIELD NOTES / AWARDS</span><p>Best Freelancer · ILC COMSATS</p><p>Web Development Runner-up · Softec & Nascon</p></div>
-      </section>
+          <section id="projects" class="editor-section" data-buffer="projects.lua" aria-labelledby="projects-heading">
+            <div class="section-content">
+              <header class="section-header source-line" data-line="1">
+                <p><span class="syntax-keyword">local</span> <strong id="projects-heading" class="syntax-function">selected_work</strong> <span class="syntax-punctuation">= {'{'}</span></p>
+                <span>2 BUFFERS</span>
+              </header>
+              <p class="section-lead code-comment source-line" data-line="3">-- Products beyond the main route, spanning consumer mobile and connected health systems.</p>
+              <div class="project-grid">
+                <article class="project-card">
+                  <header class="source-line is-project-header" data-line={projectLines[0].open}><span><span class="syntax-punctuation">{'{'}</span> <span class="syntax-property">file</span> = <span class="syntax-string">"wallpaper-app.tsx"</span>,</span><b>-- 01 · TSX</b></header>
+                  <div class="project-drawing wallpaper-drawing" aria-hidden="true">
+                    <svg viewBox="0 0 600 390" fill="none">
+                      <path class="contour" d="M-20 346C74 209 131 321 201 201C271 81 398 159 442 56C486-47 579 67 639-5"></path>
+                      <path class="contour" d="M-3 383C89 250 156 352 232 230C308 108 421 188 471 86C521-16 595 98 650 38"></path>
+                      <rect x="218" y="42" width="177" height="306"></rect><rect x="229" y="55" width="155" height="280"></rect>
+                      <path class="screen-land" d="M230 274l42-69 33 36 31-72 48 59v107H229Z"></path>
+                      <path d="M280 65h54"></path><circle cx="306" cy="317" r="5"></circle>
+                    </svg>
+                  </div>
+                  <div class="project-copy">
+                    <p class="source-line is-project" data-line={projectLines[0].category}><span class="syntax-property">category</span> = <span class="syntax-string">"consumer / mobile"</span>,</p>
+                    <h3 class="source-line is-project" data-line={projectLines[0].name}><span class="syntax-property">name</span> = <span class="syntax-string">"Wallpaper application"</span>,</h3>
+                    <p class="source-line is-project" data-line={projectLines[0].summary}><span class="syntax-property">summary</span> = <span class="syntax-string">"An App Store product built with web technologies and delivered to native devices."</span>,</p>
+                    <span class="source-line is-project" data-line={projectLines[0].stack}><span class="syntax-property">stack</span> = <span class="syntax-punctuation">{'{'}</span> <span class="syntax-string">"Next.js"</span>, <span class="syntax-string">"React"</span>, <span class="syntax-string">"Capacitor"</span> <span class="syntax-punctuation">{'}'},</span></span>
+                    <p class="project-object-close syntax-punctuation source-line is-project" data-line={projectLines[0].close}>{'}'},</p>
+                  </div>
+                </article>
+                <article class="project-card">
+                  <header class="source-line is-project-header" data-line={projectLines[1].open}><span><span class="syntax-punctuation">{'{'}</span> <span class="syntax-property">file</span> = <span class="syntax-string">"smart-health.ts"</span>,</span><b>-- 02 · TS</b></header>
+                  <div class="project-drawing health-drawing" aria-hidden="true">
+                    <svg viewBox="0 0 600 390" fill="none">
+                      <path class="road" d="M-20 327C83 254 130 331 221 240C312 149 359 217 443 125C488 76 534 58 620 42"></path>
+                      <path class="road minor" d="M39 18C114 98 174 41 251 108C328 175 392 297 629 249"></path>
+                      <g class="marker"><circle cx="221" cy="240" r="34"></circle><circle cx="221" cy="240" r="6"></circle><path d="M221 198v-25m-8 8 8-8 8 8"></path></g>
+                      <rect x="376" y="78" width="143" height="74"></rect><path class="signal" d="M393 115h17l9-17 13 36 10-19h58"></path>
+                      <text x="376" y="173">LIVE PATIENT SIGNAL</text>
+                    </svg>
+                  </div>
+                  <div class="project-copy">
+                    <p class="source-line is-project" data-line={projectLines[1].category}><span class="syntax-property">category</span> = <span class="syntax-string">"connected health"</span>,</p>
+                    <h3 class="source-line is-project" data-line={projectLines[1].name}><span class="syntax-property">name</span> = <span class="syntax-string">"Smart Health"</span>,</h3>
+                    <p class="source-line is-project" data-line={projectLines[1].summary}><span class="syntax-property">summary</span> = <span class="syntax-string">"Live ambulance tracking and incoming patient status for hospital administrators."</span>,</p>
+                    <span class="source-line is-project" data-line={projectLines[1].stack}><span class="syntax-property">stack</span> = <span class="syntax-punctuation">{'{'}</span> <span class="syntax-string">"Angular"</span>, <span class="syntax-string">"Node.js"</span>, <span class="syntax-string">"FHIR"</span> <span class="syntax-punctuation">{'}'},</span></span>
+                    <p class="project-object-close syntax-punctuation source-line is-project" data-line={projectLines[1].close}>{'}'},</p>
+                  </div>
+                </article>
+              </div>
+              <p class="syntax-punctuation section-close source-line" data-line={projectClosingLine}>{'}'}</p>
+              <p class="source-line" data-line={projectReturnLine}><span class="syntax-keyword">return</span> <span class="syntax-function">selected_work</span></p>
+            </div>
+          </section>
 
-      <section id="contact" class="contact-section">
-        <svg class="contact-map" viewBox="0 0 900 700" aria-hidden="true" fill="none">
-          <path d="M63 574C56 430 142 357 130 239C118 121 266 47 406 75C546 103 584 212 698 234C812 256 866 389 805 505C744 621 624 655 510 618C396 581 326 663 205 641C130 627 67 635 63 574Z"></path>
-          <path d="M109 552C103 429 175 367 165 266C155 165 280 102 399 126C518 150 550 243 647 262C744 281 790 394 738 493C686 592 584 621 487 589C390 557 331 627 228 608C164 596 112 604 109 552Z"></path>
-          <path d="M158 528C153 428 211 378 203 296C195 214 296 163 392 182C488 201 514 277 592 292C670 307 707 399 665 479C623 559 541 582 463 556C385 530 337 587 254 571C203 562 160 570 158 528Z"></path>
-          <path d="M214 500C210 426 253 389 247 328C241 267 316 229 388 243C460 257 479 313 537 324C595 335 623 404 592 463C561 522 500 539 441 520C382 501 347 543 285 532C246 524 216 532 214 500Z"></path>
-        </svg>
-        <div class="atlas-wrap contact-inner reveal">
-          <p class="map-label">SECTOR 06 / OPEN CHANNEL</p>
-          <span class="contact-kicker">HAVE A HARD PRODUCT PROBLEM?</span>
-          <h2>Let’s find the<br />clearest route.</h2>
-          <a href="mailto:m4kamran008@gmail.com"><span>m4kamran008@gmail.com</span><b>TRANSMIT ↗</b></a>
-        </div>
-      </section>
-    </main>
+          <section id="education" class="editor-section" data-buffer="education.md" aria-labelledby="education-heading">
+            <div class="section-content">
+              <header class="section-header source-line" data-line="1">
+                <p><span class="syntax-type">##</span> <strong id="education-heading">Foundation</strong></p>
+                <span>2015 — 2019</span>
+              </header>
+              <div class="education-grid">
+                <div><p class="code-comment">COMSATS University · Islamabad, Pakistan</p><h2>Bachelor’s in<br />Software Engineering</h2></div>
+                <div><span><i class="syntax-type">###</i> Awards</span><p>- Best Freelancer · ILC COMSATS</p><p>- Web Development Runner-up · Softec & Nascon</p></div>
+              </div>
+            </div>
+          </section>
 
-    <footer class="footer atlas-wrap"><span>© {new Date().getFullYear()} M. KAMRAN</span><span>47.2692° N / 09.6120° E</span><span>SENIOR SOFTWARE ENGINEER</span><a href="#top">RETURN TO DATUM ↑</a></footer>
+          <section id="contact" class="editor-section contact-section" data-buffer="contact.sh" aria-labelledby="contact-heading">
+            <div class="section-content contact-content">
+              <p class="code-comment source-line" data-line="1">#!/usr/bin/env bash</p>
+              <p class="source-line" data-line="2"><span class="syntax-keyword">set</span> -euo pipefail</p>
+              <p class="source-line" data-line="4"><span class="syntax-keyword">readonly</span> PRODUCT_PROBLEM=<span class="syntax-string">"&#36;&#123;PRODUCT_PROBLEM:-hard&#125;"</span></p>
+              <p class="source-line" data-line="5"><span class="syntax-keyword">readonly</span> EMAIL=<span class="syntax-string">"m4kamran008@gmail.com"</span></p>
+              <p class="source-line" data-line="6"><span class="syntax-keyword">readonly</span> MESSAGE=<span class="syntax-string">"Let’s find the clearest solution."</span></p>
+              <p class="source-line" data-line="8"><span class="syntax-keyword">if</span> [[ <span class="syntax-string">"$PRODUCT_PROBLEM"</span> == <span class="syntax-string">"hard"</span> ]]; <span class="syntax-keyword">then</span></p>
+              <div class="code-indent">
+                <p class="source-line is-indented" data-line="9"><span class="syntax-function">printf</span> <span class="syntax-string">"%s\n"</span> <span class="syntax-string">"$MESSAGE"</span></p>
+                <div class="command-output">
+                  <p class="contact-kicker">stdout</p>
+                  <h2 id="contact-heading">Let’s find the<br />clearest solution.</h2>
+                </div>
+                <a class="email-command source-line is-indented" data-line="10" href="mailto:m4kamran008@gmail.com"><span class="prompt">$</span><span><i class="syntax-function">xdg-open</i> <i class="syntax-string">"mailto:&#36;&#123;EMAIL&#125;"</i></span><b>↗</b></a>
+              </div>
+              <p class="source-line" data-line="11"><span class="syntax-keyword">fi</span><span class="block-cursor" aria-hidden="true"></span></p>
+            </div>
+          </section>
+        </main>
+      </div>
+    </div>
+
+    <footer class="statusline">
+      <span class="mode">NORMAL</span>
+      <span class="status-file"><i>◆</i><b data-status-file>kamran.ts</b></span>
+      <span class="status-branch">main*</span>
+      <span class="status-spacer"></span>
+      <span class="status-location">Vorarlberg, AT</span>
+      <span>utf-8</span>
+      <span data-scroll-progress>0%</span>
+      <span>© {new Date().getFullYear()}</span>
+    </footer>
   </div>
 
   <script>
-    const heroFrame = document.querySelector<HTMLElement>('.hero-frame');
-    const heroStage = document.querySelector<HTMLElement>('.hero-stage');
-    const heroImage = document.querySelector<HTMLImageElement>('.hero-image');
-    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const sectionLinks = [...document.querySelectorAll<HTMLAnchorElement>('[data-section]')];
+    const sections = [...document.querySelectorAll<HTMLElement>('[data-buffer]')];
+    const statusFile = document.querySelector<HTMLElement>('[data-status-file]');
+    const bufferName = document.querySelector<HTMLElement>('[data-buffer-name]');
+    const scrollProgress = document.querySelector<HTMLElement>('[data-scroll-progress]');
 
-    const afterPaint = () => Promise.race([
-      new Promise<void>((resolve) => requestAnimationFrame(() => requestAnimationFrame(() => resolve()))),
-      new Promise<void>((resolve) => window.setTimeout(resolve, 120)),
-    ]);
-
-    const showHero = () => {
-      if (!heroFrame || !heroStage) return;
-      heroFrame.classList.remove('is-loading');
-      heroFrame.classList.add('is-ready');
-      heroStage.removeAttribute('inert');
-      heroStage.removeAttribute('aria-hidden');
+    const setActiveSection = (section: HTMLElement) => {
+      const id = section.id;
+      const filename = section.dataset.buffer ?? 'kamran.ts';
+      sectionLinks.forEach((link) => link.classList.toggle('is-active', link.dataset.section === id));
+      if (statusFile) statusFile.textContent = filename;
+      if (bufferName) bufferName.textContent = filename;
     };
 
-    const loadHero = async () => {
-      if (!heroImage) return showHero();
-      const imageReady = heroImage.complete && heroImage.naturalWidth
-        ? heroImage.decode().catch(() => undefined)
-        : new Promise<void>((resolve) => {
-            heroImage.addEventListener('load', () => resolve(), { once: true });
-            heroImage.addEventListener('error', () => resolve(), { once: true });
-          });
-      const fontReady = Promise.race([
-        document.fonts.ready,
-        new Promise<void>((resolve) => window.setTimeout(resolve, 1800)),
-      ]);
-      const mediaReady = Promise.race([
-        imageReady,
-        new Promise<void>((resolve) => window.setTimeout(resolve, 2500)),
-      ]);
-      const minimumDelay = new Promise<void>((resolve) => window.setTimeout(resolve, reducedMotion ? 0 : 700));
-
-      await Promise.all([fontReady, mediaReady, minimumDelay]);
-      await afterPaint();
-      showHero();
-    };
-
-    loadHero();
-
-    const animatedElements = document.querySelectorAll('.reveal');
-    const observer = new IntersectionObserver((entries) => {
-      for (const entry of entries) {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('is-visible');
-          observer.unobserve(entry.target);
-        }
-      }
-    }, { threshold: 0.1 });
-
-    animatedElements.forEach((element) => observer.observe(element));
-
-    const profileBody = document.querySelector<HTMLElement>('.profile-body');
-    const letters = [...document.querySelectorAll<HTMLElement>('.animated-char')];
     let ticking = false;
-    const updateLetters = () => {
-      if (profileBody && letters.length) {
-        const rect = profileBody.getBoundingClientRect();
-        const start = window.innerHeight * 0.8;
-        const end = window.innerHeight * 0.2;
-        const progress = Math.max(0, Math.min(1, (start - rect.top) / Math.max(1, start - end + rect.height)));
-        letters.forEach((letter, index) => {
-          const characterProgress = index / letters.length;
-          const opacity = Math.max(0, Math.min(1, (progress - characterProgress + 0.1) / 0.15));
-          letter.style.opacity = `${0.2 + opacity * 0.8}`;
-        });
-      }
+    const updateScrollProgress = () => {
+      const available = document.documentElement.scrollHeight - window.innerHeight;
+      const progress = available > 0 ? Math.round((window.scrollY / available) * 100) : 0;
+      const marker = window.innerHeight * 0.3;
+      const activeSection = sections.reduce((active, section) => (
+        section.getBoundingClientRect().top <= marker ? section : active
+      ), sections[0]);
+      if (scrollProgress) scrollProgress.textContent = `${progress}%`;
+      if (activeSection) setActiveSection(activeSection);
       ticking = false;
     };
+
     window.addEventListener('scroll', () => {
       if (!ticking) {
-        requestAnimationFrame(updateLetters);
+        requestAnimationFrame(updateScrollProgress);
         ticking = true;
       }
     }, { passive: true });
-    updateLetters();
-
-    if (reducedMotion) {
-      document.querySelectorAll('video').forEach((video) => video.pause());
-      letters.forEach((letter) => { letter.style.opacity = '1'; });
-    }
+    updateScrollProgress();
   </script>
 </Layout>
