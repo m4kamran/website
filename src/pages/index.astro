@@ -499,7 +499,12 @@ const nameChars = [...name];
       if (next) echo(`:e ${next.dataset.file}`);
     };
     addEventListener('keydown', (e) => {
-      if (e.metaKey || e.ctrlKey || e.altKey) return;
+      // Modifier keys fire their own keydown (Shift for G, AltGr for [ ] on German layouts);
+      // ignore them so they don't reset a pending g / z / [ / ].
+      if (e.key.length !== 1 && e.key !== 'Escape') return;
+      // AltGr reports as Ctrl+Alt on Windows, so only bail on real shortcuts.
+      const altGr = e.getModifierState?.('AltGraph');
+      if (e.metaKey || (!altGr && (e.ctrlKey || e.altKey))) return;
       const t = e.target;
       if (t instanceof Element && t.closest('input, textarea, select, [contenteditable]')) return;
       const key = pending + e.key;
@@ -521,7 +526,7 @@ const nameChars = [...name];
         }
         case 'g': case ']': case '[': case 'z':
           pending = key;
-          pendingTimer = window.setTimeout(() => (pending = ''), 700);
+          pendingTimer = window.setTimeout(() => (pending = ''), 1000);
           break;
         case ':': echo(':', {}); break;
         case 'Escape': setMode('NORMAL'); echo(''); break;
