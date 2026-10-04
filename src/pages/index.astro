@@ -3,451 +3,539 @@ import Layout from '../layouts/Layout.astro';
 import { Image } from 'astro:assets';
 import profileImage from '../../content/images/profile.jpg';
 
+const email = 'm4kamran008@gmail.com';
+const name = 'Muhammad Kamran';
+
+const files = [
+  { id: 'top', file: 'kamran.ts', icon: 'TS', kind: 'ts', short: 'kamran' },
+  { id: 'about', file: 'README.md', icon: 'M', kind: 'md', short: 'about' },
+  { id: 'work', file: 'experience.ts', icon: 'TS', kind: 'ts', short: 'work' },
+  { id: 'health', file: 'health://kamran', icon: '+', kind: 'health', short: 'skills' },
+  { id: 'projects', file: 'projects.lua', icon: 'L', kind: 'lua', short: 'projects' },
+  { id: 'contact', file: 'contact.sh', icon: '$', kind: 'sh', short: 'contact' },
+];
+
 const experiences = [
   {
     company: 'Platomics',
-    role: 'Senior Software Engineer · Full Stack',
-    period: '2024 — now',
-    location: 'Dornbirn · remote',
-    summary: 'Setting technical direction for a greenfield product across frontend, backend, delivery and applied AI.',
-    details: [
-      'Led the product from concept to MVP, shaping architecture and scalable foundations with Angular, TypeScript and Nx.',
-      'Built reusable Storybook components with the Frontend Guild and introduced Playwright end-to-end and visual regression testing.',
-      'Own production releases with Kubernetes, GitOps and Flux; contribute Spring Boot APIs, Java services and database migrations.',
-      'Developed Python document pipelines using LLMs and RAG to parse technical data and automate manufacturer product creation.',
-      'Mentor junior engineers through reviews, pairing and technical guidance.',
+    role: 'Senior Software Engineer, Full Stack',
+    period: '2024 – now',
+    place: 'Dornbirn, remote',
+    notes: [
+      'Took a new product from concept to MVP and set most of its architecture: Angular and Nx in front, Spring Boot behind.',
+      'Ship production releases on Kubernetes with GitOps (Flux), and write the Java APIs and database migrations when a feature needs them.',
+      'Built Python pipelines that use LLMs and RAG to read technical documents and create manufacturer product data without manual entry.',
+      'Introduced Playwright end-to-end and visual regression tests; build shared Storybook components with the frontend guild.',
+      'Review, pair with and mentor the junior engineers on the team.',
     ],
-    tags: ['Angular', 'Nx', 'Playwright', 'Java', 'Python · RAG', 'Kubernetes'],
+    stack: ['Angular', 'Nx', 'Playwright', 'Spring Boot', 'Python', 'Kubernetes'],
     current: true,
   },
   {
     company: 'Triply & Jumio',
-    role: 'Senior Software Engineer · Frontend',
-    period: '2023 — 2024',
-    location: 'Vienna · remote',
-    summary: 'Simplified a fragmented frontend estate into a reliable, testable Nx monorepo.',
-    details: [
-      'Developed multiple Angular applications with TypeScript and Tailwind CSS.',
-      'Migrated legacy microfrontends into an Nx monorepo and established its CI/CD workflows.',
-      'Added Cypress end-to-end coverage and organized community-of-practice sessions to improve engineering standards.',
+    role: 'Senior Software Engineer, Frontend',
+    period: '2023 – 2024',
+    place: 'Vienna, remote',
+    notes: [
+      'Merged a set of legacy micro-frontends into one Nx monorepo and set up its CI/CD.',
+      'Built several Angular apps with TypeScript and Tailwind.',
+      'Added Cypress end-to-end tests and ran community-of-practice sessions on frontend standards.',
     ],
-    tags: ['Angular', 'TypeScript', 'Nx', 'Cypress', 'CI/CD'],
+    stack: ['Angular', 'Nx', 'Tailwind', 'Cypress'],
   },
   {
     company: 'Fusonic',
-    role: 'Software Engineer · Frontend',
-    period: '2020 — 2023',
-    location: 'Götzis · Austria',
-    summary: 'Led product UI, data visualization and mobile delivery for a large energy platform.',
-    details: [
-      'Led an Angular and Nx frontend for NeoVac with Redux state management and more than 90% Jest test coverage.',
-      'Created a GitLab pipeline to build, test and publish a UI library; integrated Docker and custom amCharts visualizations.',
-      'Shipped an Ionic Capacitor app to both app stores, making customer onboarding available on iOS and Android.',
-      'Mentored a junior developer and hosted frontend community-of-practice sessions across Fusonic.',
+    role: 'Software Engineer, Frontend',
+    period: '2020 – 2023',
+    place: 'Götzis, Austria',
+    notes: [
+      'Led the Angular frontend of NeoVac’s energy platform: Nx, Redux-style state, Jest coverage above 90%.',
+      'Wrote the GitLab pipeline that builds, tests and publishes the shared UI library; built custom amCharts dashboards.',
+      'Shipped an Ionic/Capacitor onboarding app to the App Store and Google Play.',
+      'Mentored a junior developer and hosted frontend sessions for the whole company.',
     ],
-    tags: ['Angular', 'Redux', 'Jest', 'Ionic', 'Storybook', 'GitLab'],
+    stack: ['Angular', 'NgRx', 'Jest', 'Ionic', 'Storybook', 'GitLab CI'],
   },
   {
     company: 'OneByte',
-    role: 'Software Engineer · Full Stack',
-    period: '2019 — 2020',
-    location: 'Islamabad · Pakistan',
-    summary: 'Delivered an MVP end to end, from PostgreSQL and APIs to a dynamic Angular admin interface.',
-    details: [
-      'Developed REST APIs in TypeScript, Node.js and Express, improving search performance and scalability.',
-      'Wrote migrations, optimized PostgreSQL JSONB queries and containerized the application with Docker.',
-      'Designed an Angular admin dashboard including a dynamic form builder and delivered directly with the CTO.',
+    role: 'Software Engineer, Full Stack',
+    period: '2019 – 2020',
+    place: 'Islamabad, Pakistan',
+    notes: [
+      'Built an MVP together with the CTO: REST APIs in Node, Express and TypeScript on PostgreSQL, packaged with Docker.',
+      'Rewrote slow JSONB queries so search stayed fast as data grew.',
+      'Designed the Angular admin panel, including a dynamic form builder.',
     ],
-    tags: ['Node.js', 'Angular', 'PostgreSQL', 'Docker', 'REST'],
+    stack: ['Node.js', 'PostgreSQL', 'Angular', 'Docker'],
   },
   {
     company: 'LibreHealth',
-    role: 'Google Summer of Code · Intern',
-    period: '2018 · 3 months',
-    location: 'Remote',
-    summary: 'Contributed reusable Web Components to the open-source FHIR toolkit.',
-    details: ['Built standards-based healthcare interface components with PolymerJS for an international open-source community.'],
-    tags: ['Open source', 'FHIR', 'Web Components'],
+    role: 'Google Summer of Code',
+    period: '2018',
+    place: 'Remote',
+    notes: ['Wrote reusable Polymer web components for the open-source FHIR toolkit used to build healthcare apps.'],
+    stack: ['Web Components', 'FHIR', 'Open source'],
   },
   {
-    company: 'Independent',
-    role: 'Freelance Web Developer',
-    period: '2015 — 2019',
-    location: 'Remote',
-    summary: 'Delivered 200+ web projects for small businesses before graduating.',
-    details: ['Helped clients establish and improve their online presence through product design and web development.'],
-    tags: ['200+ projects', 'Product delivery', 'Client work'],
+    company: 'Freelance',
+    role: 'Web Developer',
+    period: '2015 – 2019',
+    place: 'Remote',
+    notes: ['Started in my first year of university. By graduation I had delivered 200+ websites for small businesses.'],
+    stack: ['200+ projects'],
     url: 'https://www.fiverr.com/m4kamran',
   },
 ];
 
-const aboutText = 'I move comfortably through interfaces, APIs, data models, infrastructure and LLM-powered workflows. I care about understandable architecture, calm products, useful tests and helping other engineers do their best work.';
-
-const capabilities = [
+const health = [
   {
-    number: '01',
-    title: 'Frontend systems.',
-    items: ['Product architecture', 'Design systems', 'Complex application state', 'Accessible interfaces'],
+    group: 'frontend',
+    checks: [
+      ['ok', 'Angular, TypeScript, RxJS, NgRx. Where I’m most at home'],
+      ['ok', 'Nx monorepos, shared libraries, Storybook design systems'],
+      ['ok', 'React and Next.js when the project calls for it'],
+    ],
   },
   {
-    number: '02',
-    title: 'Quality at scale.',
-    items: ['Visual regression', 'End-to-end strategy', 'Reliable release pipelines', 'Maintainable monorepos'],
+    group: 'quality',
+    checks: [
+      ['ok', 'Playwright, Cypress, Jest; visual regression in CI'],
+      ['ok', 'Code review, pairing, mentoring'],
+    ],
   },
   {
-    number: '03',
-    title: 'Full-stack delivery.',
-    items: ['API and data design', 'Cloud-native releases', 'Applied AI workflows', 'Technical mentorship'],
+    group: 'backend & delivery',
+    checks: [
+      ['ok', 'Node/Express, Spring Boot, PostgreSQL'],
+      ['ok', 'Docker, Kubernetes, GitOps with Flux, GitLab CI'],
+      ['ok', 'Python pipelines with LLMs and RAG'],
+    ],
+  },
+  {
+    group: 'languages',
+    checks: [
+      ['ok', 'English: fluent'],
+      ['warn', 'German: B1, still improving'],
+    ],
   },
 ];
 
-let experienceLine = 5;
-const experienceEntries = experiences.map((experience) => {
-  const lines = {
-    summary: experienceLine++,
-    description: experienceLine++,
-    details: experienceLine++,
-    tags: experienceLine++,
-    url: experience.url ? experienceLine++ : undefined,
-    close: experienceLine++,
-  };
-  return { ...experience, lines };
-});
-const experienceClosingLine = experienceLine;
-
-let capabilityLine = 5;
-const capabilityEntries = capabilities.map((capability) => {
-  const lines = {
-    open: capabilityLine++,
-    title: capabilityLine++,
-    items: capabilityLine++,
-    close: capabilityLine++,
-    reference: capabilityLine++,
-  };
-  return { ...capability, lines };
-});
-const capabilityClosingLine = capabilityLine;
-
-let projectLine = 5;
-const projectLines = [0, 1].map(() => ({
-  open: projectLine++,
-  category: projectLine++,
-  name: projectLine++,
-  summary: projectLine++,
-  stack: projectLine++,
-  close: projectLine++,
-}));
-const projectClosingLine = projectLine++;
-const projectReturnLine = projectLine;
+const nameChars = [...name];
 ---
 
 <Layout
-  title="M. Kamran — Senior Software Engineer"
-  description="Senior software engineer in Vorarlberg, Austria. I design and build robust products across frontend, backend and applied AI."
+  title="Muhammad Kamran — Senior Software Engineer"
+  description="Senior software engineer in Vorarlberg, Austria. Angular and TypeScript at heart, full stack when the work needs it."
 >
   <a class="skip-link" href="#main-buffer">Skip to content</a>
 
-  <div class="editor-shell">
-    <header class="app-bar">
-      <div class="window-mark" aria-hidden="true"><span></span><span></span><span></span></div>
-      <a class="workspace-name" href="#top"><span>~/</span>kamran.pro</a>
-      <span class="branch">main*</span>
+  <div class="shell">
+    <header class="tabline">
+      <a class="workspace" href="#top"><span class="dim">~/</span>kamran.pro</a>
+      <nav class="buffers" aria-label="Sections">
+        {files.map((f, i) => (
+          <a href={`#${f.id}`} data-nav={f.id} class:list={[{ 'is-active': i === 0 }]}>
+            <i class:list={['ico', f.kind]}>{f.icon}</i>{f.short}
+          </a>
+        ))}
+      </nav>
+      <span class="branch"><i aria-hidden="true">⎇</i> main</span>
     </header>
 
-    <div class="editor-layout">
-      <aside class="explorer" aria-label="Portfolio explorer">
-        <div class="pane-label"><span>EXPLORER</span><b>...</b></div>
-        <p class="project-root"><span>⌄</span> KAMRAN.PRO</p>
-        <nav aria-label="Primary navigation">
-          <a class="is-active" href="#top" data-section="top"><i class="file-icon ts">TS</i><span>kamran.ts</span></a>
-          <a href="#about" data-section="about"><i class="file-icon markdown">M</i><span>about.md</span></a>
-          <a href="#work" data-section="work"><i class="file-icon ts">TS</i><span>experience.ts</span></a>
-          <a href="#capabilities" data-section="capabilities"><i class="file-icon ts">TS</i><span>capabilities.ts</span></a>
-          <a href="#projects" data-section="projects"><i class="file-icon lua">L</i><span>projects.lua</span></a>
-          <a href="#education" data-section="education"><i class="file-icon markdown">M</i><span>education.md</span></a>
-          <a href="#contact" data-section="contact"><i class="file-icon shell">$</i><span>contact.sh</span></a>
+    <div class="layout">
+      <aside class="explorer" aria-label="File explorer">
+        <p class="pane-title">EXPLORER</p>
+        <p class="tree-root"><span class="chev">▾</span> kamran.pro</p>
+        <nav class="tree" aria-label="Primary">
+          <span class="tree-cursor" aria-hidden="true"></span>
+          {files.map((f, i) => (
+            <a href={`#${f.id}`} data-nav={f.id} data-file={f.file} class:list={[{ 'is-active': i === 0 }]}>
+              <i class:list={['ico', f.kind]}>{f.icon}</i><span>{f.file}</span>
+            </a>
+          ))}
         </nav>
 
-        <div class="explorer-block">
-          <p><span>⌄</span> OUTLINE</p>
+        <div class="keys" aria-label="Keyboard shortcuts">
+          <p class="pane-title">KEYS</p>
           <dl>
-            <div><dt>kamran</dt><dd>object</dd></div>
-            <div><dt>experience</dt><dd>6 items</dd></div>
-            <div><dt>capabilities</dt><dd>3 items</dd></div>
-            <div><dt>status</dt><dd class="ok">available</dd></div>
+            <div><dt><kbd>j</kbd> <kbd>k</kbd></dt><dd>scroll</dd></div>
+            <div><dt><kbd>gg</kbd> <kbd>G</kbd></dt><dd>top / bottom</dd></div>
+            <div><dt><kbd>]]</kbd> <kbd>[[</kbd></dt><dd>next / prev file</dd></div>
+            <div><dt><kbd>za</kbd></dt><dd>toggle folds</dd></div>
           </dl>
         </div>
 
-        <div class="explorer-foot">
-          <span>47.2692° N</span>
-          <span>09.6120° E</span>
-        </div>
+        <p class="explorer-foot"><span>47.27° N</span><span>9.61° E</span></p>
       </aside>
 
       <div class="buffer">
         <div class="winbar">
-          <div class="breadcrumbs"><span>kamran.pro</span><b>›</b><span>src</span><b>›</b><strong data-buffer-name>kamran.ts</strong></div>
-          <span class="diagnostics"><i></i> 0 errors</span>
+          <span class="crumbs"><span class="dim">kamran.pro</span><b>›</b><strong data-winbar>kamran.ts</strong></span>
+          <span class="diag"><i></i>0 errors</span>
         </div>
 
-        <nav class="mobile-nav" aria-label="Mobile navigation">
-          <a href="#top">kamran</a><a href="#about">about</a><a href="#work">work</a><a href="#capabilities">skills</a><a href="#projects">projects</a><a href="#contact">contact</a>
-        </nav>
-
         <main id="main-buffer">
-          <section id="top" class="editor-section hero-section" data-buffer="kamran.ts" aria-labelledby="hero-heading">
-            <div class="section-content hero-content">
-              <p class="code-comment source-line" data-line="1">// portfolio/kamran.ts</p>
-              <p class="code-line source-line" data-line="3"><span class="syntax-keyword">export const</span> <span class="syntax-function">kamran</span> <span class="syntax-punctuation">= {'{'}</span></p>
-              <div class="code-indent hero-copy">
-                <p class="hero-name-label source-line is-indented" data-line="4"><span class="syntax-property">name</span><span class="syntax-punctuation">:</span></p>
-                <h1 id="hero-heading"><span class="string-mark">"</span>Muhammad <span>Kamran</span><span class="string-mark">"</span><b>,</b></h1>
-                <p class="hero-role source-line is-indented" data-line="5"><span class="syntax-property">role</span><span class="syntax-punctuation">:</span> <span class="syntax-string">"Full-stack product engineer"</span><span class="syntax-punctuation">,</span></p>
-                <p class="hero-intro source-line is-indented" data-line="6"><span class="syntax-property">summary</span><span class="syntax-punctuation">:</span> <span class="syntax-string">"I guide architecture, delivery and teams from first sketch to resilient production software, with deep frontend expertise and a practical full-stack range."</span><span class="syntax-punctuation">,</span></p>
-              </div>
-              <p class="code-line hero-close source-line" data-line="7"><span class="syntax-punctuation">{'}'}</span> <span class="syntax-keyword">as const</span><span class="syntax-punctuation">;</span></p>
-
-              <dl class="runtime-grid" aria-label="Professional summary">
-                <div><dt>location</dt><dd>Vorarlberg / AT</dd></div>
-                <div><dt>scope</dt><dd>interface → infrastructure</dd></div>
-                <div><dt>focus</dt><dd>product / systems / AI</dd></div>
-                <div><dt>experience</dt><dd>10+ years</dd></div>
-              </dl>
-              <div class="hero-actions" aria-label="Editor commands">
-                <a class="primary-command" href="#work"><span>:edit</span> experience.ts</a>
-                <a href="mailto:m4kamran008@gmail.com"><span>:!xdg-open</span> 'mailto:m4kamran008@gmail.com'</a>
-              </div>
+          <!-- kamran.ts -->
+          <section id="top" class="file hero" data-file="kamran.ts" aria-labelledby="hero-name">
+            <div class="l c"><i>// kamran.ts</i></div>
+            <div class="l"></div>
+            <div class="l"><span class="k">export const</span> <span class="f">kamran</span> <span class="p">= {'{'}</span></div>
+            <div class="l i1 name-line">
+              <span class="prop">name</span><span class="p">:</span>
+              <h1 id="hero-name" aria-label={name}>
+                <span class="q" aria-hidden="true">"</span>
+                {nameChars.map((ch, i) => <span class="ch" style={`--c:${i}`} aria-hidden="true">{ch === ' ' ? ' ' : ch}</span>)}
+                <span class="q" aria-hidden="true">"</span><span class="p comma" aria-hidden="true">,</span>
+              </h1>
             </div>
+            <div class="l i1"><span class="prop">role</span><span class="p">:</span> <span class="s">"Senior Software Engineer"</span><span class="p">,</span></div>
+            <div class="l i1"><span class="prop">based</span><span class="p">:</span> <span class="s">"Vorarlberg, Austria"</span><span class="p">,</span></div>
+            <div class="l i1"><span class="prop">now</span><span class="p">:</span> <a class="s link" href="https://platomics.com" target="_blank" rel="noreferrer">"Platomics"</a><span class="p">,</span></div>
+            <div class="l i1"><span class="prop">stack</span><span class="p">: [</span><span class="s">"Angular"</span>, <span class="s">"TypeScript"</span>, <span class="s">"Java"</span>, <span class="s">"Python"</span>, <span class="s">"Kubernetes"</span><span class="p">],</span></div>
+            <div class="l"><span class="p">{'}'};</span></div>
+            <div class="l"></div>
+            <div class="l c prose"><i>// I build web products from the first commit to production.</i></div>
+            <div class="l c prose"><i>// Mostly frontend, often full stack, lately with some LLM plumbing.</i></div>
+            <div class="l c prose"><i>// A decade in, the part I still like most is when it ships.</i></div>
+            <div class="l"></div>
+            <div class="l actions">
+              <a class="cmd primary" href="#work" data-cmd=":e experience.ts"><span>:e</span> experience.ts</a>
+              <a class="cmd" href={`mailto:${email}`} data-cmd=":!mail"><span>:!</span>mail {email}</a>
+            </div>
+            <div class="l"><span class="cursor" aria-hidden="true"></span></div>
           </section>
 
-          <section id="about" class="editor-section" data-buffer="about.md" aria-labelledby="about-heading">
-            <div class="section-content">
-              <header class="section-header source-line" data-line="1">
-                <p><span class="syntax-type">#</span> README.md</p>
-                <span>PROFILE</span>
-              </header>
-              <div class="profile-split">
-                <div class="profile-copy">
-                  <p class="code-comment source-line" data-line="3">&gt; product-engineering / architecture / delivery</p>
-                  <h2 id="about-heading">I build clear software and guide ambitious products from architecture to production.</h2>
-                  <p>{aboutText}</p>
+          <!-- README.md -->
+          <section id="about" class="file" data-file="README.md" aria-labelledby="about-h">
+            <div class="l"><h2 id="about-h" class="md-h"><span class="hash">#</span> About</h2></div>
+            <div class="l"></div>
+            <div class="about">
+              <div class="about-copy">
+                <p class="l prose">
+                  I got into this as a teenager, running a blog about Windows and Linux customisation and
+                  breaking its theme over and over until HTML and CSS made sense. That turned into
+                  freelancing, then into product teams in Islamabad and, since 2020, in Austria.
+                </p>
+                <div class="l"></div>
+                <p class="l prose">
+                  These days I’m a frontend specialist who doesn’t stop at the API boundary. I like
+                  owning a feature from the migration to the last pixel, writing tests that catch real
+                  bugs, and leaving a codebase easier to work in than I found it.
+                </p>
+                <div class="l"></div>
+                <p class="l prose">
+                  I still tweak my dotfiles more than I should. That’s more or less why this site
+                  looks like Neovim.
+                </p>
+                <div class="l"></div>
+                <div class="l"><h3 class="md-h sub"><span class="hash">##</span> Education</h3></div>
+                <div class="l prose"><span class="bullet">-</span> <strong>BS Software Engineering</strong>, COMSATS University Islamabad <span class="dim">(2015 – 2019)</span></div>
+                <div class="l prose"><span class="bullet">-</span> Best Freelancer award, ILC COMSATS</div>
+                <div class="l prose"><span class="bullet">-</span> Runner-up in web development at Softec and NaSCon</div>
+              </div>
+
+              <figure class="portrait">
+                <figcaption><span class="ico img">◧</span> kamran.webp <span class="dim">320×320</span></figcaption>
+                <div class="portrait-frame">
+                  <Image src={profileImage} alt="Portrait of Muhammad Kamran" width={320} height={320} format="webp" loading="lazy" />
                 </div>
-                <aside class="profile-pane" aria-label="Profile details">
-                  <header><span>profile.webp</span><b>×</b></header>
-                  <Image src={profileImage} alt="Portrait of M. Kamran" width={320} height={320} format="webp" />
-                  <div class="profile-data-tab">profile.json</div>
-                  <p class="profile-json-brace">{'{'}</p>
-                  <dl>
-                    <div><dt>"base":</dt><dd>"Vorarlberg · Austria",</dd></div>
-                    <div><dt>"languages":</dt><dd>"English · German B1",</dd></div>
-                    <div><dt>"perspective":</dt><dd>"Frontend → AI systems",</dd></div>
-                    <div><dt>"status":</dt><dd class="ok">"available"</dd></div>
-                  </dl>
-                  <p class="profile-json-brace">{'}'}</p>
-                </aside>
-              </div>
+              </figure>
             </div>
           </section>
 
-          <section id="work" class="editor-section" data-buffer="experience.ts" aria-labelledby="work-heading">
-            <div class="section-content">
-              <header class="section-header source-line" data-line="1">
-                <p><span class="syntax-keyword">export const</span> <strong id="work-heading" class="syntax-function">experience</strong> <span class="syntax-punctuation">= [</span></p>
-                <span>6 REFERENCES</span>
-              </header>
-              <p class="section-lead code-comment source-line" data-line="3">// Six roles across product engineering, from independent delivery to technical direction.</p>
+          <!-- experience.ts -->
+          <section id="work" class="file" data-file="experience.ts" aria-labelledby="work-h">
+            <div class="l"><span class="k">export const</span> <h2 id="work-h" class="f inline">experience</h2> <span class="p">= [</span></div>
+            <div class="l i1 c"><i>// six roles, newest first. click a fold, or press za to open them all</i></div>
+            <div class="folds">
+              {experiences.map((x, i) => (
+                <details class="fold" open={i === 0}>
+                  <summary class="l i1">
+                    <span class="fold-mark" aria-hidden="true"></span>
+                    <span class="fold-title"><strong>{x.company}</strong><span class="dim"> · {x.role}</span></span>
+                    <span class="fold-fill" aria-hidden="true"></span>
+                    <span class="fold-period">{x.current && <i class="live" title="current role"></i>}{x.period}</span>
+                  </summary>
+                  <div class="fold-body">
+                    <div class="l i2 meta"><span class="prop">where</span><span class="p">:</span> <span class="s">"{x.place}"</span><span class="p">,</span></div>
+                    {x.notes.map((n) => <div class="l i2 note"><span class="bullet">–</span><span>{n}</span></div>)}
+                    <div class="l i2 tags">{x.stack.map((t) => <span class="tag">{t}</span>)}{x.url && <a class="tag link" href={x.url} target="_blank" rel="noreferrer">fiverr ↗</a>}</div>
+                  </div>
+                </details>
+              ))}
+            </div>
+            <div class="l"><span class="p">];</span></div>
+          </section>
 
-              <div class="experience-list">
-                {experienceEntries.map((experience, index) => (
-                  <details class="experience" open={index === 0}>
-                    <summary class="source-line" data-line={experience.lines.summary}>
-                      <span class="fold" aria-hidden="true">›</span>
-                      <span class="experience-index"><b>{'{'}</b><small>// {String(index + 1).padStart(2, '0')}</small></span>
-                      <span class="experience-main">
-                        <strong><span class="syntax-property">company</span><span class="syntax-punctuation">:</span> <span class="syntax-string">"{experience.company}"</span><span class="syntax-punctuation">,</span></strong>
-                        <small><span class="syntax-property">role</span><span class="syntax-punctuation">:</span> <span class="syntax-string">"{experience.role}"</span><span class="syntax-punctuation">,</span></small>
-                      </span>
-                      <span class="experience-meta">
-                        <b><span class="syntax-property">period</span><span class="syntax-punctuation">:</span> <span class="syntax-string">"{experience.period}"</span><span class="syntax-punctuation">,</span></b>
-                        <small><span class="syntax-property">location</span><span class="syntax-punctuation">:</span> <span class="syntax-string">"{experience.location}"</span><span class="syntax-punctuation">,</span></small>
-                      </span>
-                      {experience.current && <span class="current"><i></i><span class="syntax-property">current</span>: true,</span>}
-                    </summary>
-                    <div class="experience-body">
-                      <p class="experience-summary-field source-line is-nested" data-line={experience.lines.description}><span class="syntax-property">summary</span><span class="syntax-punctuation">:</span> <span class="syntax-string">"{experience.summary}"</span><span class="syntax-punctuation">,</span></p>
-                      <p class="details-field source-line is-nested" data-line={experience.lines.details}><span class="syntax-property">details</span><span class="syntax-punctuation">: [</span> {experience.details.map((detail) => <><span class="syntax-string">"{detail}"</span><span class="syntax-punctuation">, </span></>)}<span class="syntax-punctuation">],</span></p>
-                      <div class="tech-line">
-                        <p class="source-line is-nested" data-line={experience.lines.tags}><span class="syntax-property">tags</span><span class="syntax-punctuation">: [</span> {experience.tags.map((tag) => <><span class="syntax-string">"{tag}"</span><span class="syntax-punctuation">, </span></>)}<span class="syntax-punctuation">],</span></p>
-                        {experience.url && <p class="source-line is-nested" data-line={experience.lines.url}><span class="syntax-property">url</span><span class="syntax-punctuation">:</span> <a href={experience.url} target="_blank" rel="noreferrer">"{experience.url}"</a><span class="syntax-punctuation">,</span></p>}
-                        <p class="object-close syntax-punctuation source-line is-nested" data-line={experience.lines.close}>{'}'},</p>
-                      </div>
-                    </div>
-                  </details>
+          <!-- health://kamran -->
+          <section id="health" class="file" data-file="health://kamran" aria-labelledby="health-h">
+            <div class="l"><span class="dim">:</span><span class="k">checkhealth</span> <span class="f">kamran</span></div>
+            <div class="l rule" aria-hidden="true"></div>
+            <div class="l"><h2 id="health-h" class="health-h">kamran: <span class="dim">require("kamran.health").check()</span></h2></div>
+            {health.map((g) => (
+              <>
+                <div class="l"></div>
+                <div class="l"><h3 class="health-group">{g.group}</h3></div>
+                {g.checks.map(([level, text]) => (
+                  <div class:list={['l', 'i1', 'check', level]}>
+                    <span class="badge">{level === 'ok' ? 'OK' : 'WARNING'}</span> {text}
+                  </div>
                 ))}
-              </div>
-              <p class="section-close source-line" data-line={experienceClosingLine}><span class="syntax-punctuation">]</span> <span class="syntax-keyword">as const</span><span class="syntax-punctuation">;</span></p>
-            </div>
+              </>
+            ))}
           </section>
 
-          <section id="capabilities" class="editor-section" data-buffer="capabilities.ts" aria-labelledby="capabilities-heading">
-            <div class="section-content">
-              <header class="section-header source-line" data-line="1">
-                <p><span class="syntax-keyword">export const</span> <strong id="capabilities-heading" class="syntax-function">capabilities</strong> <span class="syntax-punctuation">= [</span></p>
-                <span>SYMBOLS</span>
-              </header>
-              <div class="capabilities-intro">
-                <h2 class="source-line" data-line="2"><span>/**</span> Studio-grade engineering for ambitious products.</h2>
-                <p class="source-line" data-line="3">* Built for clarity. Ready for scale. */</p>
-              </div>
-              <div class="capability-grid">
-                {capabilityEntries.map((capability) => (
-                  <article class="capability-card">
-                    <div class="capability-title source-line is-card" data-line={capability.lines.open}><span><b>{'{'}</b> // {capability.number}</span><i>object</i></div>
-                    <h3 class="source-line is-card" data-line={capability.lines.title}><span class="syntax-property">title</span><span class="syntax-punctuation">:</span> <span class="syntax-string">"{capability.title}"</span><span class="syntax-punctuation">,</span></h3>
-                    <p class="capability-items-label source-line is-card" data-line={capability.lines.items}><span class="syntax-property">items</span><span class="syntax-punctuation">: [</span> {capability.items.map((item) => <><span class="syntax-string">"{item}"</span><span class="syntax-punctuation">, </span></>)}<span class="syntax-punctuation">],</span></p>
-                    <p class="capability-object-close syntax-punctuation source-line is-card" data-line={capability.lines.close}>{'}'},</p>
-                    <a class="source-line is-card" data-line={capability.lines.reference} href="#work">// go to definition <b>→</b></a>
-                  </article>
-                ))}
-              </div>
-              <p class="section-close source-line" data-line={capabilityClosingLine}><span class="syntax-punctuation">]</span> <span class="syntax-keyword">as const</span><span class="syntax-punctuation">;</span></p>
-            </div>
-          </section>
-
-          <section id="projects" class="editor-section" data-buffer="projects.lua" aria-labelledby="projects-heading">
-            <div class="section-content">
-              <header class="section-header source-line" data-line="1">
-                <p><span class="syntax-keyword">local</span> <strong id="projects-heading" class="syntax-function">selected_work</strong> <span class="syntax-punctuation">= {'{'}</span></p>
-                <span>2 BUFFERS</span>
-              </header>
-              <p class="section-lead code-comment source-line" data-line="3">-- Products beyond the main route, spanning consumer mobile and connected health systems.</p>
-              <div class="project-grid">
-                <article class="project-card">
-                  <header class="source-line is-project-header" data-line={projectLines[0].open}><span><span class="syntax-punctuation">{'{'}</span> <span class="syntax-property">file</span> = <span class="syntax-string">"wallpaper-app.tsx"</span>,</span><b>-- 01 · TSX</b></header>
-                  <div class="project-drawing wallpaper-drawing" aria-hidden="true">
-                    <svg viewBox="0 0 600 390" fill="none">
-                      <path class="contour" d="M-20 346C74 209 131 321 201 201C271 81 398 159 442 56C486-47 579 67 639-5"></path>
-                      <path class="contour" d="M-3 383C89 250 156 352 232 230C308 108 421 188 471 86C521-16 595 98 650 38"></path>
-                      <rect x="218" y="42" width="177" height="306"></rect><rect x="229" y="55" width="155" height="280"></rect>
-                      <path class="screen-land" d="M230 274l42-69 33 36 31-72 48 59v107H229Z"></path>
-                      <path d="M280 65h54"></path><circle cx="306" cy="317" r="5"></circle>
-                    </svg>
-                  </div>
-                  <div class="project-copy">
-                    <p class="source-line is-project" data-line={projectLines[0].category}><span class="syntax-property">category</span> = <span class="syntax-string">"consumer / mobile"</span>,</p>
-                    <h3 class="source-line is-project" data-line={projectLines[0].name}><span class="syntax-property">name</span> = <span class="syntax-string">"Wallpaper application"</span>,</h3>
-                    <p class="source-line is-project" data-line={projectLines[0].summary}><span class="syntax-property">summary</span> = <span class="syntax-string">"An App Store product built with web technologies and delivered to native devices."</span>,</p>
-                    <span class="source-line is-project" data-line={projectLines[0].stack}><span class="syntax-property">stack</span> = <span class="syntax-punctuation">{'{'}</span> <span class="syntax-string">"Next.js"</span>, <span class="syntax-string">"React"</span>, <span class="syntax-string">"Capacitor"</span> <span class="syntax-punctuation">{'}'},</span></span>
-                    <p class="project-object-close syntax-punctuation source-line is-project" data-line={projectLines[0].close}>{'}'},</p>
-                  </div>
-                </article>
-                <article class="project-card">
-                  <header class="source-line is-project-header" data-line={projectLines[1].open}><span><span class="syntax-punctuation">{'{'}</span> <span class="syntax-property">file</span> = <span class="syntax-string">"smart-health.ts"</span>,</span><b>-- 02 · TS</b></header>
-                  <div class="project-drawing health-drawing" aria-hidden="true">
-                    <svg viewBox="0 0 600 390" fill="none">
-                      <path class="road" d="M-20 327C83 254 130 331 221 240C312 149 359 217 443 125C488 76 534 58 620 42"></path>
-                      <path class="road minor" d="M39 18C114 98 174 41 251 108C328 175 392 297 629 249"></path>
-                      <g class="marker"><circle cx="221" cy="240" r="34"></circle><circle cx="221" cy="240" r="6"></circle><path d="M221 198v-25m-8 8 8-8 8 8"></path></g>
-                      <rect x="376" y="78" width="143" height="74"></rect><path class="signal" d="M393 115h17l9-17 13 36 10-19h58"></path>
-                      <text x="376" y="173">LIVE PATIENT SIGNAL</text>
-                    </svg>
-                  </div>
-                  <div class="project-copy">
-                    <p class="source-line is-project" data-line={projectLines[1].category}><span class="syntax-property">category</span> = <span class="syntax-string">"connected health"</span>,</p>
-                    <h3 class="source-line is-project" data-line={projectLines[1].name}><span class="syntax-property">name</span> = <span class="syntax-string">"Smart Health"</span>,</h3>
-                    <p class="source-line is-project" data-line={projectLines[1].summary}><span class="syntax-property">summary</span> = <span class="syntax-string">"Live ambulance tracking and incoming patient status for hospital administrators."</span>,</p>
-                    <span class="source-line is-project" data-line={projectLines[1].stack}><span class="syntax-property">stack</span> = <span class="syntax-punctuation">{'{'}</span> <span class="syntax-string">"Angular"</span>, <span class="syntax-string">"Node.js"</span>, <span class="syntax-string">"FHIR"</span> <span class="syntax-punctuation">{'}'},</span></span>
-                    <p class="project-object-close syntax-punctuation source-line is-project" data-line={projectLines[1].close}>{'}'},</p>
-                  </div>
-                </article>
-              </div>
-              <p class="syntax-punctuation section-close source-line" data-line={projectClosingLine}>{'}'}</p>
-              <p class="source-line" data-line={projectReturnLine}><span class="syntax-keyword">return</span> <span class="syntax-function">selected_work</span></p>
-            </div>
-          </section>
-
-          <section id="education" class="editor-section" data-buffer="education.md" aria-labelledby="education-heading">
-            <div class="section-content">
-              <header class="section-header source-line" data-line="1">
-                <p><span class="syntax-type">##</span> <strong id="education-heading">Foundation</strong></p>
-                <span>2015 — 2019</span>
-              </header>
-              <div class="education-grid">
-                <div><p class="code-comment">COMSATS University · Islamabad, Pakistan</p><h2>Bachelor’s in<br />Software Engineering</h2></div>
-                <div><span><i class="syntax-type">###</i> Awards</span><p>- Best Freelancer · ILC COMSATS</p><p>- Web Development Runner-up · Softec & Nascon</p></div>
-              </div>
-            </div>
-          </section>
-
-          <section id="contact" class="editor-section contact-section" data-buffer="contact.sh" aria-labelledby="contact-heading">
-            <div class="section-content contact-content">
-              <p class="code-comment source-line" data-line="1">#!/usr/bin/env bash</p>
-              <p class="source-line" data-line="2"><span class="syntax-keyword">set</span> -euo pipefail</p>
-              <p class="source-line" data-line="4"><span class="syntax-keyword">readonly</span> PRODUCT_PROBLEM=<span class="syntax-string">"&#36;&#123;PRODUCT_PROBLEM:-hard&#125;"</span></p>
-              <p class="source-line" data-line="5"><span class="syntax-keyword">readonly</span> EMAIL=<span class="syntax-string">"m4kamran008@gmail.com"</span></p>
-              <p class="source-line" data-line="6"><span class="syntax-keyword">readonly</span> MESSAGE=<span class="syntax-string">"Let’s find the clearest solution."</span></p>
-              <p class="source-line" data-line="8"><span class="syntax-keyword">if</span> [[ <span class="syntax-string">"$PRODUCT_PROBLEM"</span> == <span class="syntax-string">"hard"</span> ]]; <span class="syntax-keyword">then</span></p>
-              <div class="code-indent">
-                <p class="source-line is-indented" data-line="9"><span class="syntax-function">printf</span> <span class="syntax-string">"%s\n"</span> <span class="syntax-string">"$MESSAGE"</span></p>
-                <div class="command-output">
-                  <p class="contact-kicker">stdout</p>
-                  <h2 id="contact-heading">Let’s find the<br />clearest solution.</h2>
+          <!-- projects.lua -->
+          <section id="projects" class="file" data-file="projects.lua" aria-labelledby="projects-h">
+            <div class="l"><span class="k">local</span> <h2 id="projects-h" class="f inline">side_projects</h2> <span class="p">= {'{'}</span></div>
+            <div class="l i1 c"><i>-- things built outside the day job</i></div>
+            <div class="projects">
+              <article class="card l i1">
+                <div class="card-art" aria-hidden="true">
+                  <svg viewBox="0 0 600 340" fill="none">
+                    <path class="draw contour" d="M-20 316C74 179 131 291 201 171C271 51 398 129 442 26C486-77 579 37 639-35"></path>
+                    <path class="draw contour" d="M-3 353C89 220 156 322 232 200C308 78 421 158 471 56"></path>
+                    <rect class="draw" x="222" y="30" width="156" height="280" rx="18"></rect>
+                    <path class="draw land" d="M234 250l38-62 30 32 28-64 44 54v54H234Z"></path>
+                    <path class="draw" d="M280 46h40"></path>
+                  </svg>
                 </div>
-                <a class="email-command source-line is-indented" data-line="10" href="mailto:m4kamran008@gmail.com"><span class="prompt">$</span><span><i class="syntax-function">xdg-open</i> <i class="syntax-string">"mailto:&#36;&#123;EMAIL&#125;"</i></span><b>↗</b></a>
+                <div class="card-body">
+                  <p class="card-kicker">consumer · mobile</p>
+                  <h3>Wallpaper app</h3>
+                  <p>A wallpaper app on the App Store, written with web tech and shipped as a native app through Capacitor.</p>
+                  <p class="tags"><span class="tag">Next.js</span><span class="tag">React</span><span class="tag">Capacitor</span></p>
+                </div>
+              </article>
+              <article class="card l i1">
+                <div class="card-art" aria-hidden="true">
+                  <svg viewBox="0 0 600 340" fill="none">
+                    <path class="draw road" d="M-20 297C83 224 130 301 221 210C312 119 359 187 443 95C488 46 534 28 620 12"></path>
+                    <path class="draw road minor" d="M39 -12C114 68 174 11 251 78C328 145 392 267 629 219"></path>
+                    <circle class="pulse" cx="221" cy="210" r="30"></circle>
+                    <circle class="dot" cx="221" cy="210" r="6"></circle>
+                    <rect class="draw" x="376" y="48" width="143" height="74"></rect>
+                    <path class="draw signal" d="M390 85h17l9-17 13 36 10-19h66"></path>
+                  </svg>
+                </div>
+                <div class="card-body">
+                  <p class="card-kicker">health · realtime</p>
+                  <h3>Salama</h3>
+                  <p>Hospital staff watch incoming ambulances on a live map and see the patient’s condition before arrival. Angular dashboard, Node API, Flutter apps, FHIR data, Stripe and push notifications.</p>
+                  <p class="tags"><span class="tag">Angular</span><span class="tag">Node.js</span><span class="tag">Flutter</span><span class="tag">FHIR</span></p>
+                </div>
+              </article>
+            </div>
+            <div class="l"><span class="p">{'}'}</span></div>
+          </section>
+
+          <!-- contact.sh -->
+          <section id="contact" class="file contact" data-file="contact.sh" aria-labelledby="contact-h">
+            <div class="l c"><i>#!/usr/bin/env bash</i></div>
+            <div class="l c"><i># A role, a side project, or just shop talk: email works best.</i></div>
+            <div class="l"></div>
+            <div class="l"><span class="k">email</span>=<span class="s">"{email}"</span></div>
+            <div class="l"><span class="f">open</span> <span class="s">"mailto:$email"</span></div>
+            <div class="l"></div>
+            <div class="l term">
+              <p class="term-prompt"><span class="ok">❯</span> ./contact.sh</p>
+              <h2 id="contact-h"><a href={`mailto:${email}`}>Say hello<span class="cursor" aria-hidden="true"></span></a></h2>
+              <div class="term-actions">
+                <a class="cmd primary" href={`mailto:${email}`}><span>↗</span> {email}</a>
+                <button class="cmd" type="button" data-yank={email}><span>yy</span> copy address</button>
               </div>
-              <p class="source-line" data-line="11"><span class="syntax-keyword">fi</span><span class="block-cursor" aria-hidden="true"></span></p>
+              <p class="elsewhere">
+                <a href="https://github.com/m4kamran" target="_blank" rel="noreferrer">github</a>
+                <a href="https://linkedin.com/in/m4kamran" target="_blank" rel="noreferrer">linkedin</a>
+              </p>
             </div>
           </section>
+
+          <div class="eob" aria-hidden="true">{Array.from({ length: 6 }, () => <span>~</span>)}</div>
         </main>
       </div>
     </div>
 
-    <footer class="statusline">
-      <span class="mode">NORMAL</span>
-      <span class="status-file"><i>◆</i><b data-status-file>kamran.ts</b></span>
-      <span class="status-branch">main*</span>
-      <span class="status-spacer"></span>
-      <span class="status-location">Vorarlberg, AT</span>
-      <span>utf-8</span>
-      <span data-scroll-progress>0%</span>
-      <span>© {new Date().getFullYear()}</span>
+    <footer class="statusbar">
+      <div class="statusline">
+        <span class="mode" data-mode>NORMAL</span>
+        <span class="sl-branch"><i aria-hidden="true">⎇</i> main</span>
+        <span class="sl-file" data-status-file>kamran.ts</span>
+        <span class="sl-spacer"></span>
+        <span class="sl-meta">utf-8</span>
+        <span class="sl-meta">Vorarlberg, AT</span>
+        <span class="sl-pos" data-pos>Top</span>
+      </div>
+      <div class="cmdline" aria-live="polite"><span data-cmdline></span></div>
     </footer>
   </div>
 
   <script>
-    const sectionLinks = [...document.querySelectorAll<HTMLAnchorElement>('[data-section]')];
-    const sections = [...document.querySelectorAll<HTMLElement>('[data-buffer]')];
-    const statusFile = document.querySelector<HTMLElement>('[data-status-file]');
-    const bufferName = document.querySelector<HTMLElement>('[data-buffer-name]');
-    const scrollProgress = document.querySelector<HTMLElement>('[data-scroll-progress]');
+    const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const $ = <T extends Element = HTMLElement>(s: string) => document.querySelector<T>(s);
+    const navLinks = [...document.querySelectorAll<HTMLAnchorElement>('[data-nav]')];
+    const sections = [...document.querySelectorAll<HTMLElement>('section.file')];
+    const folds = [...document.querySelectorAll<HTMLDetailsElement>('details.fold')];
+    const modeEl = $('[data-mode]');
+    const cmdline = $('[data-cmdline]');
+    const winbar = $('[data-winbar]');
+    const statusFile = $('[data-status-file]');
+    const pos = $('[data-pos]');
+    const tree = $('.tree');
+    const treeCursor = $('.tree-cursor');
 
-    const setActiveSection = (section: HTMLElement) => {
-      const id = section.id;
-      const filename = section.dataset.buffer ?? 'kamran.ts';
-      sectionLinks.forEach((link) => link.classList.toggle('is-active', link.dataset.section === id));
-      if (statusFile) statusFile.textContent = filename;
-      if (bufferName) bufferName.textContent = filename;
+    // --- mode -------------------------------------------------------------
+    let lockedMode: string | null = null;
+    const setMode = (mode: string) => {
+      if (!modeEl || modeEl.textContent === mode) return;
+      modeEl.textContent = mode;
+      modeEl.dataset.mode = mode.toLowerCase();
+    };
+
+    // --- cmdline ----------------------------------------------------------
+    let typingTimer: number | undefined;
+    let clearTimer: number | undefined;
+    const echo = (text: string, opts: { type?: boolean; then?: string } = {}) => {
+      if (!cmdline) return;
+      window.clearInterval(typingTimer);
+      window.clearTimeout(clearTimer);
+      const finish = () => {
+        if (opts.then) window.setTimeout(() => (cmdline.textContent = opts.then!), 260);
+        clearTimer = window.setTimeout(() => (cmdline.textContent = ''), 4200);
+      };
+      if (!opts.type || reduced) {
+        cmdline.textContent = text;
+        return finish();
+      }
+      let i = 0;
+      cmdline.textContent = '';
+      typingTimer = window.setInterval(() => {
+        cmdline.textContent = text.slice(0, ++i);
+        if (i >= text.length) {
+          window.clearInterval(typingTimer);
+          finish();
+        }
+      }, 28);
+    };
+
+    // --- active file --------------------------------------------------------
+    let current = '';
+    const lineCount = (s: HTMLElement) => s.querySelectorAll('.l').length;
+    const setActive = (section: HTMLElement) => {
+      if (section.id === current) return;
+      current = section.id;
+      const file = section.dataset.file ?? '';
+      navLinks.forEach((a) => a.classList.toggle('is-active', a.dataset.nav === section.id));
+      if (winbar) winbar.textContent = file;
+      if (statusFile) statusFile.textContent = file;
+      const active = tree?.querySelector<HTMLElement>('a.is-active');
+      if (active && treeCursor) {
+        treeCursor.style.transform = `translateY(${active.offsetTop}px)`;
+        treeCursor.style.height = `${active.offsetHeight}px`;
+      }
+      document.querySelector('.buffers a.is-active')?.scrollIntoView({ block: 'nearest', inline: 'nearest' });
     };
 
     let ticking = false;
-    const updateScrollProgress = () => {
-      const available = document.documentElement.scrollHeight - window.innerHeight;
-      const progress = available > 0 ? Math.round((window.scrollY / available) * 100) : 0;
-      const marker = window.innerHeight * 0.3;
-      const activeSection = sections.reduce((active, section) => (
-        section.getBoundingClientRect().top <= marker ? section : active
-      ), sections[0]);
-      if (scrollProgress) scrollProgress.textContent = `${progress}%`;
-      if (activeSection) setActiveSection(activeSection);
+    const onScroll = () => {
+      const max = document.documentElement.scrollHeight - innerHeight;
+      const pct = max > 0 ? Math.round((scrollY / max) * 100) : 0;
+      if (pos) pos.textContent = scrollY < 8 ? 'Top' : pct >= 99 ? 'Bot' : `${pct}%`;
+      const marker = innerHeight * 0.35;
+      const active = sections.reduce((acc, s) => (s.getBoundingClientRect().top <= marker ? s : acc), sections[0]);
+      if (active) setActive(active);
       ticking = false;
     };
-
-    window.addEventListener('scroll', () => {
-      if (!ticking) {
-        requestAnimationFrame(updateScrollProgress);
-        ticking = true;
-      }
+    addEventListener('scroll', () => {
+      if (!ticking) { requestAnimationFrame(onScroll); ticking = true; }
     }, { passive: true });
-    updateScrollProgress();
+    addEventListener('resize', () => { current = ''; onScroll(); });
+
+    navLinks.forEach((a) => a.addEventListener('click', () => {
+      const s = document.getElementById(a.dataset.nav ?? '');
+      if (s) echo(`:e ${s.dataset.file}`, { type: true, then: `"${s.dataset.file}" ${lineCount(s)}L` });
+    }));
+    document.querySelectorAll<HTMLElement>('[data-cmd]').forEach((el) =>
+      el.addEventListener('click', () => echo(el.dataset.cmd ?? '', { type: true })),
+    );
+
+    // --- reveal ---------------------------------------------------------------
+    sections.forEach((s) => s.querySelectorAll<HTMLElement>(':scope .l').forEach((l, i) => l.style.setProperty('--i', String(Math.min(i, 24)))));
+    if ('IntersectionObserver' in window && !reduced) {
+      const io = new IntersectionObserver((entries) => entries.forEach((e) => {
+        if (e.isIntersecting) { e.target.classList.add('is-in'); io.unobserve(e.target); }
+      }), { rootMargin: '0px 0px -12% 0px' });
+      sections.forEach((s) => io.observe(s));
+    } else {
+      sections.forEach((s) => s.classList.add('is-in'));
+    }
+
+    // --- yank -----------------------------------------------------------------
+    document.querySelectorAll<HTMLButtonElement>('[data-yank]').forEach((b) => b.addEventListener('click', async () => {
+      try {
+        await navigator.clipboard.writeText(b.dataset.yank ?? '');
+        echo(`"${b.dataset.yank}" yanked to clipboard`);
+        b.classList.add('is-yanked');
+        window.setTimeout(() => b.classList.remove('is-yanked'), 900);
+      } catch {
+        echo('E353: Nothing in register "+');
+      }
+    }));
+
+    // --- visual mode on selection -----------------------------------------------
+    document.addEventListener('selectionchange', () => {
+      if (lockedMode) return;
+      const sel = document.getSelection();
+      setMode(sel && !sel.isCollapsed && sel.toString().trim() ? 'VISUAL' : 'NORMAL');
+    });
+
+    // --- keys -----------------------------------------------------------------
+    let pending = '';
+    let pendingTimer: number | undefined;
+    const go = (dir: 1 | -1) => {
+      const i = sections.findIndex((s) => s.id === current);
+      const next = sections[Math.max(0, Math.min(sections.length - 1, i + dir))];
+      next?.scrollIntoView({ behavior: reduced ? 'auto' : 'smooth' });
+      if (next) echo(`:e ${next.dataset.file}`);
+    };
+    addEventListener('keydown', (e) => {
+      if (e.metaKey || e.ctrlKey || e.altKey) return;
+      const t = e.target;
+      if (t instanceof Element && t.closest('input, textarea, select, [contenteditable]')) return;
+      const key = pending + e.key;
+      window.clearTimeout(pendingTimer);
+      pending = '';
+      const behavior: ScrollBehavior = reduced ? 'auto' : 'smooth';
+      switch (key) {
+        case 'j': scrollBy({ top: 72, behavior }); break;
+        case 'k': scrollBy({ top: -72, behavior }); break;
+        case 'gg': scrollTo({ top: 0, behavior }); echo('gg'); break;
+        case 'G': scrollTo({ top: document.documentElement.scrollHeight, behavior }); echo('G'); break;
+        case ']]': go(1); break;
+        case '[[': go(-1); break;
+        case 'za': {
+          const open = folds.some((f) => !f.open);
+          folds.forEach((f) => (f.open = open));
+          echo(open ? `${folds.length} folds opened` : `${folds.length} folds closed`);
+          break;
+        }
+        case 'g': case ']': case '[': case 'z':
+          pending = key;
+          pendingTimer = window.setTimeout(() => (pending = ''), 700);
+          break;
+        case ':': echo(':', {}); break;
+        case 'Escape': setMode('NORMAL'); echo(''); break;
+        default: return;
+      }
+    });
+
+    // --- boot -----------------------------------------------------------------
+    onScroll();
+    if (!reduced) {
+      lockedMode = 'INSERT';
+      setMode('INSERT');
+      window.setTimeout(() => { lockedMode = null; setMode('NORMAL'); }, 1500);
+      window.setTimeout(() => echo(':e kamran.ts', { type: true, then: `"kamran.ts" ${lineCount(sections[0])}L  ·  press j / k to move, ]] for next file` }), 300);
+    }
   </script>
 </Layout>
